@@ -230,7 +230,7 @@ const About = () => {
               animate={isInView ? "visible" : "hidden"}
             >
               <AboutText>
-                I'm an analytical and detail-oriented professional with experience in research, data analysis, and project management. Currently completing my Bachelor of Arts in Economics at the University of Washington (GPA: 3.85/4.0), I'm passionate about strategy consulting and helping clients make data-driven decisions.
+                I'm an analytical and detail-oriented professional with experience in research, data analysis, and project management. Currently completing my Master of Sciences in Computer Science at the University of Washington (GPA: 3.85/4.0), I'm passionate about strategy consulting and helping clients make data-driven decisions.
               </AboutText>
               <AboutText>
                 My approach combines structured problem-solving with stakeholder engagement to deliver actionable insights. Through my work as a Project Manager at the University Research Lab, I've led research analyzing local market trends, conducting interviews with 30+ stakeholders, and synthesizing findings into strategic recommendations for industry partners.
