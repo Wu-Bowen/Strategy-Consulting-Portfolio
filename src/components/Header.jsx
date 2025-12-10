@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.header`
@@ -23,12 +24,13 @@ const Nav = styled.nav`
   align-items: center;
 `;
 
-const Logo = styled.div`
+const Logo = styled(Link)`
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--white);
   letter-spacing: -0.5px;
+  text-decoration: none;
 
   span {
     color: var(--secondary-aqua);
@@ -84,6 +86,9 @@ const NavLink = styled.li`
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,42 +99,67 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (e, sectionId) => {
+  const handleNavClick = (e, sectionId) => {
     e.preventDefault();
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offsetTop = element.offsetTop - 80; // Account for fixed header
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
+
+    if (!isHomePage) {
+      // Navigate to home page with hash
+      navigate(`/#${sectionId}`);
+      // Scroll will be handled by the useEffect below
+    } else {
+      // Already on home page, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offsetTop = element.offsetTop - 80;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
     }
   };
+
+  // Handle scrolling when navigating from another page with a hash
+  useEffect(() => {
+    if (isHomePage && location.hash) {
+      const sectionId = location.hash.replace('#', '');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offsetTop = element.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
+  }, [location, isHomePage]);
 
   return (
     <HeaderContainer $scrolled={scrolled}>
       <Nav>
-        <Logo>
+        <Logo to="/">
           Eric <span>Wu</span>
         </Logo>
         <NavLinks>
           <NavLink>
-            <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>
+            <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>
               About
             </a>
           </NavLink>
           <NavLink>
-            <a href="#skills" onClick={(e) => scrollToSection(e, 'skills')}>
+            <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>
               Skills
             </a>
           </NavLink>
           <NavLink>
-            <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')}>
+            <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>
               Projects
             </a>
           </NavLink>
           <NavLink>
-            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>
+            <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>
               Contact
             </a>
           </NavLink>

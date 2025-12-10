@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ProjectsSection = styled.section`
@@ -77,11 +78,20 @@ const ProjectCard = styled(motion.div)`
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  cursor: ${props => props.$hasLink ? 'pointer' : 'default'};
 
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   }
+`;
+
+const ProjectCardLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
 const ProjectHeader = styled.div`
@@ -190,46 +200,67 @@ const Tag = styled.span`
   border: 1px solid rgba(26, 42, 58, 0.1);
 `;
 
+const ViewCaseStudyBadge = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--secondary-aqua);
+  color: var(--white);
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+
+  ${ProjectCard}:hover & {
+    background-color: #00d4b8;
+    transform: translateX(5px);
+  }
+`;
+
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const projectsData = [
     {
+      icon: '⚡',
+      category: 'Product Management',
+      title: 'Multi-Factor Authentication for Frontline Workers',
+      description: 'Led product management for integrating secure authentication into Zebra\'s workforce timeclock system. Balanced security requirements with user experience to deliver a solution that reduced clock-in time while improving compliance and eliminating buddy-punching.',
+      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      metrics: [
+        { label: 'Clock-in Time', value: '~30% faster' },
+        { label: 'Pilot Sites', value: '3' }
+      ],
+      tags: ['Product Management', 'User Research', 'Cross-functional Leadership', 'Requirements Definition'],
+      link: '/zebra-case-study'
+    },
+    {
+      icon: '📊',
+      category: 'Consulting',
+      title: 'Retail Operations Transformation',
+      description: 'Supported KPMG consulting engagement to diagnose operational inefficiencies for a retail client. Led analytical workstreams, built financial models, and coordinated stakeholder communication to deliver data-driven recommendations that reduced costs while improving customer experience.',
+      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+      metrics: [
+        { label: 'Projected Savings', value: '~$2M annually' },
+        { label: 'Initiatives', value: '8' }
+      ],
+      tags: ['Management Consulting', 'Process Optimization', 'Stakeholder Management', 'Strategic Analysis'],
+      link: '/kpmg-case-study'
+    },
+    {
       icon: '🌐',
       category: 'Market Strategy',
       title: 'Market Entry Analysis',
       description: 'Conducted market research on competitors, pricing, and customer behavior for a tech startup evaluating entry into the Seattle/Pacific Northwest market. Interviewed 20+ potential customers and industry experts, analyzed data, and created financial projections and market sizing.',
-      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
       metrics: [
         { label: 'Report Pages', value: '20' },
         { label: 'Interviews', value: '20+' }
       ],
       tags: ['Market Research', 'Data Analysis', 'Financial Projections', 'Structured Problem-Solving']
-    },
-    {
-      icon: '⚡',
-      category: 'Operations',
-      title: 'Operational Efficiency Assessment',
-      description: 'Mapped internal processes and workflows across departments for a mid-size company. Collected operational metrics and employee feedback, performed gap analysis to identify bottlenecks. Proposed 5 actionable process improvements projected to reduce process time by 15%.',
-      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      metrics: [
-        { label: 'Time Reduction', value: '15%' },
-        { label: 'Improvements', value: '5' }
-      ],
-      tags: ['Process Analysis', 'Stakeholder Interviews', 'Gap Analysis', 'Workflow Visualization']
-    },
-    {
-      icon: '📊',
-      category: 'Financial Analysis',
-      title: 'Investor Portfolio Review',
-      description: 'Collected historical portfolio data and market performance metrics to assist in evaluating investment performance for institutional clients. Built visual dashboards and tables to track KPIs, presented insights on risk, returns, and diversification in executive-ready presentations.',
-      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      metrics: [
-        { label: 'Deliverable', value: 'Executive Deck' },
-        { label: 'KPI Dashboards', value: 'Created' }
-      ],
-      tags: ['Data Analysis', 'Executive Presentations', 'Financial Research', 'Analytical Reasoning']
     }
   ];
 
@@ -290,28 +321,60 @@ const Projects = () => {
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
                 transition={{ delay: index * 0.15 }}
+                $hasLink={!!project.link}
               >
-                <ProjectHeader $gradient={project.gradient}>
-                  <ProjectIcon>{project.icon}</ProjectIcon>
-                </ProjectHeader>
-                <ProjectContent>
-                  <ProjectCategory>{project.category}</ProjectCategory>
-                  <ProjectTitle>{project.title}</ProjectTitle>
-                  <ProjectDescription>{project.description}</ProjectDescription>
-                  <ProjectMetrics>
-                    {project.metrics.map((metric, metricIndex) => (
-                      <Metric key={metricIndex}>
-                        <span>{metric.label}</span>
-                        <span>{metric.value}</span>
-                      </Metric>
-                    ))}
-                  </ProjectMetrics>
-                  <ProjectTags>
-                    {project.tags.map((tag, tagIndex) => (
-                      <Tag key={tagIndex}>{tag}</Tag>
-                    ))}
-                  </ProjectTags>
-                </ProjectContent>
+                {project.link ? (
+                  <ProjectCardLink to={project.link}>
+                    <ProjectHeader $gradient={project.gradient}>
+                      <ProjectIcon>{project.icon}</ProjectIcon>
+                    </ProjectHeader>
+                    <ProjectContent>
+                      <ProjectCategory>{project.category}</ProjectCategory>
+                      <ProjectTitle>{project.title}</ProjectTitle>
+                      <ProjectDescription>{project.description}</ProjectDescription>
+                      <ProjectMetrics>
+                        {project.metrics.map((metric, metricIndex) => (
+                          <Metric key={metricIndex}>
+                            <span>{metric.label}</span>
+                            <span>{metric.value}</span>
+                          </Metric>
+                        ))}
+                      </ProjectMetrics>
+                      <ProjectTags>
+                        {project.tags.map((tag, tagIndex) => (
+                          <Tag key={tagIndex}>{tag}</Tag>
+                        ))}
+                      </ProjectTags>
+                      <ViewCaseStudyBadge>
+                        View Case Study →
+                      </ViewCaseStudyBadge>
+                    </ProjectContent>
+                  </ProjectCardLink>
+                ) : (
+                  <>
+                    <ProjectHeader $gradient={project.gradient}>
+                      <ProjectIcon>{project.icon}</ProjectIcon>
+                    </ProjectHeader>
+                    <ProjectContent>
+                      <ProjectCategory>{project.category}</ProjectCategory>
+                      <ProjectTitle>{project.title}</ProjectTitle>
+                      <ProjectDescription>{project.description}</ProjectDescription>
+                      <ProjectMetrics>
+                        {project.metrics.map((metric, metricIndex) => (
+                          <Metric key={metricIndex}>
+                            <span>{metric.label}</span>
+                            <span>{metric.value}</span>
+                          </Metric>
+                        ))}
+                      </ProjectMetrics>
+                      <ProjectTags>
+                        {project.tags.map((tag, tagIndex) => (
+                          <Tag key={tagIndex}>{tag}</Tag>
+                        ))}
+                      </ProjectTags>
+                    </ProjectContent>
+                  </>
+                )}
               </ProjectCard>
             ))}
           </ProjectsGrid>

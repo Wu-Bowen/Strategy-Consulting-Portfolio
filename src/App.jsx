@@ -1,20 +1,23 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
 import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import ZebraCaseStudy from './pages/ZebraCaseStudy';
+import KPMGCaseStudy from './pages/KPMGCaseStudy';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/zebra-case-study" element={<ZebraCaseStudy />} />
+          <Route path="/kpmg-case-study" element={<KPMGCaseStudy />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
