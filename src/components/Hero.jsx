@@ -187,7 +187,7 @@ const Hero = () => {
           animate="visible"
         >
           <Name variants={itemVariants}>
-            Eric Wu
+            Hannah Xiao
           </Name>
           <Title variants={itemVariants}>
             Analyst | Strategy Consulting
@@ -199,7 +199,7 @@ const Hero = () => {
             <Button href="#contact" className="primary">
               Get in Touch
             </Button>
-            <Button href="/Eric_Wu_Res.pdf" className="secondary" download>
+            <Button href="/Hannah_Xiao_Res.pdf" className="secondary" download>
               Download Resume
             </Button>
           </CTAButtons>

@@ -248,9 +248,9 @@ const Footer = () => {
                 I'm always open to discussing new opportunities, collaborations, or just having a conversation about strategy and consulting.
               </p>
               <ContactInfo>
-                <ContactItem href="mailto:eric.wu@email.com">
+                <ContactItem href="mailto:hannah.xiao@email.com">
                   <span>📧</span>
-                  <span>eric.wu@email.com</span>
+                  <span>hannah.xiao@email.com</span>
                 </ContactItem>
                 <ContactItem href="tel:+15551234567">
                   <span>📱</span>
@@ -261,7 +261,7 @@ const Footer = () => {
                   <span>Seattle, WA</span>
                 </ContactItem>
               </ContactInfo>
-              <DownloadButton href="/Eric_Wu_Res.pdf" download>
+              <DownloadButton href="/Hannah_Xiao_Res.pdf" download>
                 <span>📄</span>
                 <span>Download Resume</span>
               </DownloadButton>
@@ -280,7 +280,7 @@ const Footer = () => {
                 <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Me</a></li>
                 <li><a href="#skills" onClick={(e) => scrollToSection(e, 'skills')}>Skills</a></li>
                 <li><a href="#projects" onClick={(e) => scrollToSection(e, 'projects')}>Projects</a></li>
-                <li><a href="/Eric_Wu_CL.pdf" download>Cover Letter</a></li>
+                <li><a href="/Hannah_Xiao_CL.pdf" download>Cover Letter</a></li>
               </LinksList>
             </motion.div>
           </LinksSection>
@@ -294,16 +294,16 @@ const Footer = () => {
             >
               <h4>Connect</h4>
               <SocialLinks>
-                <SocialIcon href="https://linkedin.com/in/ericwu" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                <SocialIcon href="https://linkedin.com/in/hannahxiao" target="_blank" rel="noopener noreferrer" title="LinkedIn">
                   💼
                 </SocialIcon>
-                <SocialIcon href="https://github.com/ericwu" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <SocialIcon href="https://github.com/hannahxiao" target="_blank" rel="noopener noreferrer" title="GitHub">
                   💻
                 </SocialIcon>
-                <SocialIcon href="https://twitter.com/ericwu" target="_blank" rel="noopener noreferrer" title="Twitter">
+                <SocialIcon href="https://twitter.com/hannahxiao" target="_blank" rel="noopener noreferrer" title="Twitter">
                   🐦
                 </SocialIcon>
-                <SocialIcon href="mailto:eric.wu@email.com" title="Email">
+                <SocialIcon href="mailto:hannah.xiao@email.com" title="Email">
                   ✉️
                 </SocialIcon>
               </SocialLinks>
@@ -315,7 +315,7 @@ const Footer = () => {
 
         <FooterBottom>
           <Copyright>
-            © {new Date().getFullYear()} Eric Wu. All rights reserved.
+            © {new Date().getFullYear()} Hannah Xiao. All rights reserved.
           </Copyright>
           <BottomLinks>
             <a href="#" onClick={(e) => e.preventDefault()}>Privacy Policy</a>

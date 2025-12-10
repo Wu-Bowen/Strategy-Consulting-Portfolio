@@ -72,8 +72,8 @@ This project doesn't require any environment variables, but if you add API keys 
 - [x] `netlify.toml` configuration file created
 - [x] `_redirects` file for SPA routing
 - [x] Build scripts verified in `package.json`
-- [x] Resume PDF: `public/Eric_Wu_Res.pdf` ✓
-- [x] Cover Letter PDF: `public/Eric_Wu_CL.pdf` ✓
+- [x] Resume PDF: `public/Hannah_Xiao_Res.pdf` ✓
+- [x] Cover Letter PDF: `public/Hannah_Xiao_CL.pdf` ✓
 - [x] All dependencies installed
 
 📝 **Before deploying:**
@@ -97,8 +97,8 @@ This project doesn't require any environment variables, but if you add API keys 
 ### PDFs not downloading
 - Ensure PDF files are in the `public` folder
 - File names must match exactly:
-  - `Eric_Wu_Res.pdf`
-  - `Eric_Wu_CL.pdf`
+  - `Hannah_Xiao_Res.pdf`
+  - `Hannah_Xiao_CL.pdf`
 
 ### Styles not loading
 - Clear browser cache

@@ -220,7 +220,7 @@ const About = () => {
               animate={isInView ? "visible" : "hidden"}
             >
               <ProfileImage>
-                EW
+                HX
               </ProfileImage>
             </ImageContainer>
 

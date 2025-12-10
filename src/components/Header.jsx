@@ -140,7 +140,7 @@ const Header = () => {
     <HeaderContainer $scrolled={scrolled}>
       <Nav>
         <Logo to="/">
-          Eric <span>Wu</span>
+          Hannah <span>Xiao</span>
         </Logo>
         <NavLinks>
           <NavLink>

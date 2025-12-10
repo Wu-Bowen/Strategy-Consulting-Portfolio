@@ -1,7 +1,7 @@
 # Strategy Consulting Portfolio - Setup Guide
 
 ## Overview
-This is a professional portfolio website for Eric Wu, targeting the Analyst position at Lake Partners in Seattle.
+This is a professional portfolio website for Hannah Xiao, targeting the Analyst position at Lake Partners in Seattle.
 
 ## Required Dependencies
 
